@@ -261,17 +261,16 @@ gasol_hookshots <- gasol_hookshots %>%
 class(gasol_hookshots$date) #Check the class of date --> the class should report back as date
 
 gasol_hookshots <- gasol_hookshots %>% 
-  mutate(month_new = month(date))  #Creates a new column for month
+  mutate(month_new = month(date))   #Creates a new column for month
 
 # Find the *number* of Gasol's hook shots recorded (not necessarily scored) by **month** (hint: `count(month)`) for the 2008 - 2009 season
 
-gasol_hook_shots <- gasol_hookshots %>% 
+gasol_hook_count <- gasol_hookshots %>% 
   group_by(month_new) %>% 
-  count(month_new) %>% 
-  summarize(gasol_hook_shots = sum(month_new))
+  count(month_new) 
 
 # View it: 
-gasol_hook_shots
+gasol_hook_count
 ```
 
 ### 4. `dplyr::case_when()`

@@ -599,27 +599,27 @@ gasol_hookshots &lt;- gasol_hookshots %&gt;%
 class(gasol_hookshots$date) #Check the class of date --&gt; the class should report back as date</code></pre>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <pre class="r"><code>gasol_hookshots &lt;- gasol_hookshots %&gt;% 
-  mutate(month_new = month(date))  #Creates a new column for month
+  mutate(month_new = month(date))   #Creates a new column for month
 
 # Find the *number* of Gasol&#39;s hook shots recorded (not necessarily scored) by **month** (hint: `count(month)`) for the 2008 - 2009 season
 
-gasol_hook_shots &lt;- gasol_hookshots %&gt;% 
+gasol_hook_count &lt;- gasol_hookshots %&gt;% 
   group_by(month_new) %&gt;% 
-  count(month_new) %&gt;% 
-  summarize(gasol_hook_shots = sum(month_new))
+  count(month_new) 
 
 # View it: 
-gasol_hook_shots</code></pre>
+gasol_hook_count</code></pre>
 <pre><code>## # A tibble: 7 x 2
-##   month_new gasol_hook_shots
-##       &lt;dbl&gt;            &lt;dbl&gt;
-## 1         1                1
-## 2         2                2
-## 3         3                3
-## 4         4                4
-## 5        10               10
-## 6        11               11
-## 7        12               12</code></pre>
+## # Groups:   month_new [7]
+##   month_new     n
+##       &lt;dbl&gt; &lt;int&gt;
+## 1         1    19
+## 2         2    16
+## 3         3    20
+## 4         4    14
+## 5        10     2
+## 6        11    14
+## 7        12    10</code></pre>
 </div>
 </div>
 <div id="dplyrcase_when" class="section level3">
